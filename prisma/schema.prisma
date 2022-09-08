@@ -11,7 +11,16 @@ datasource db {
 }
 
 model Questions {
-  id       Int    @id @default(autoincrement())
+  id       Int       @id @default(autoincrement())
   askedBy  String
   question String
+  Answers  Answers[]
+}
+
+model Answers {
+  id         Int       @id @default(autoincrement())
+  answeredBy String
+  answer     String
+  question   Questions @relation(fields: [questionId], references: [id])
+  questionId Int
 }
