@@ -18,7 +18,8 @@ export async function createAnswer(req: Request, res: Response) {
 }
 
 export async function get(req: Request, res: Response) {
-  // TODO
+  const getQuestions = await questionService.AllQuestionsExist();
+  res.status(200).send(getQuestions);
 }
 
 export async function getById(req: Request, res: Response) {
