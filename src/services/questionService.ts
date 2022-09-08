@@ -9,3 +9,8 @@ export async function AllQuestionsExist() {
   const allQuestions = await questionRepository.getAllQuestions();
   return allQuestions;
 }
+
+export async function questionById(questionId: number) {
+  const question = await questionRepository.getQuestionById(questionId);
+  return question;
+}
