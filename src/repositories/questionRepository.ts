@@ -11,8 +11,16 @@ export async function getAllQuestions() {
 }
 
 export async function getQuestionById(questionId: number) {
-  const question = await prisma.questions.findFirst({
+  const question = await prisma.questions.findMany({
     where: { id: questionId },
+    select: {
+      question: true,
+      Answers: {
+        select: {
+          answer: true,
+        },
+      },
+    },
   });
   return question;
 }
